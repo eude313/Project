@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ summary?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Topic: {{ summary?.topic }}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Writer: {{ summary?.writer }}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Summary: {{ summary?.summary }}</ion-label>
+  </ion-item>
+
+  <ion-item *ngFor="let comment of summary?.comments">
+    <ion-label>{{ comment.user }}: {{ comment.comment }}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Rating: {{ summary?.ratings }}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Add Comment</ion-label>
+    <ion-textarea [(ngModel)]="newComment"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Add Rating</ion-label>
+    <ion-range [(ngModel)]="newRating" min="1" max="5" step="1" snaps="true"></ion-range>
+  </ion-item>
+
+  <ion-button (click)="addCommentAndRating()">Submit</ion-button>
+</ion-content>
